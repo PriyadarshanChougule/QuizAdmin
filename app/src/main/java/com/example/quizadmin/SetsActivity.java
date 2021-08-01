@@ -44,7 +44,7 @@ public class SetsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.sa_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Sets");
+        getSupportActionBar().setTitle(catList.get(selected_cat_index).getName());
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -115,12 +115,6 @@ public class SetsActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-        //setsIDs.add("A");
-        //setsIDs.add("B");
-        //setsIDs.add("C");
 
 
 

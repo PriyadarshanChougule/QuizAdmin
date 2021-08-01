@@ -1,8 +1,14 @@
 package com.example.quizadmin;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.ArrayMap;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -42,6 +49,7 @@ public class CategoryActivity extends AppCompatActivity {
     private EditText dialogCatName;
     private Button dialogAddB;
     private CategoryAdapter adapter;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +118,6 @@ public class CategoryActivity extends AppCompatActivity {
 
         loadData();
 
-
     }
 
     private void loadData(){
@@ -164,10 +171,11 @@ public class CategoryActivity extends AppCompatActivity {
         firestore.collection("quiz").document(doc_id).set(catData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Map<String,Object> catDoc = new ArrayMap<>();
-                catDoc.put("CAT" + String.valueOf(catList.size()+1)+"_NAME",title);
-                catDoc.put("CAT" + String.valueOf(catList.size()+1)+"_ID",doc_id);
-                catDoc.put("COUNT",catList.size()+1);
+
+                    Map<String, Object> catDoc = new ArrayMap<>();
+                    catDoc.put("CAT" + String.valueOf(catList.size() + 1) + "_NAME", title);
+                    catDoc.put("CAT" + String.valueOf(catList.size() + 1) + "_ID", doc_id);
+                    catDoc.put("COUNT", catList.size() + 1);
 
                 firestore.collection("quiz").document("Categories").update(catDoc).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -186,6 +194,9 @@ public class CategoryActivity extends AppCompatActivity {
                     }
                 });
             }
+
+
+
         })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -195,5 +206,61 @@ public class CategoryActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+}
+
+
+
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId()==R.id.menu_about){
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(CategoryActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        //new code
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog diaBox = AskOption();
+        diaBox.show();
+
+    }
+
+    private AlertDialog AskOption()
+    {
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this)
+                .setTitle("Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        finishAffinity();
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+    }
+
+
+
+
 }

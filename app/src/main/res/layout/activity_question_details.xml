@@ -61,7 +61,16 @@
             android:hint="Question"
             android:textColorHint="#808080"
             />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 1 : "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         <EditText
             android:id="@+id/optionA"
             android:layout_width="match_parent"
@@ -72,10 +81,21 @@
             android:textColor="@android:color/black"
             android:textCursorDrawable="@null"
             android:inputType="textPersonName"
-            android:hint="Option A"
+            android:hint=""
+            android:textAlignment="center"
             android:textColorHint="#808080"
             />
-
+        </LinearLayout>
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 2: "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         <EditText
             android:id="@+id/optionB"
             android:layout_width="match_parent"
@@ -85,49 +105,83 @@
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/black"
             android:textCursorDrawable="@null"
+            android:textAlignment="center"
             android:inputType="textPersonName"
-            android:hint="Option B"
+            android:hint=""
             android:textColorHint="#808080"/>
-
+           </LinearLayout>
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 3 : "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         <EditText
             android:id="@+id/optionC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textAlignment="center"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/black"
             android:textCursorDrawable="@null"
             android:inputType="textPersonName"
-            android:hint="Option C"
+            android:hint=""
             android:textColorHint="#808080"/>
-
+           </LinearLayout>
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option 4 : "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         <EditText
             android:id="@+id/optionD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textAlignment="center"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/black"
             android:textCursorDrawable="@null"
             android:inputType="textPersonName"
-            android:hint="Option D"
+            android:hint=""
             android:textColorHint="#808080"/>
-
+           </LinearLayout>
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Answer : "
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
         <EditText
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textAlignment="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/black"
             android:textCursorDrawable="@null"
             android:inputType="textPersonName"
-            android:hint="Correct_Answer"
+            android:hint=""
             android:textColorHint="#808080"/>
-
+           </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

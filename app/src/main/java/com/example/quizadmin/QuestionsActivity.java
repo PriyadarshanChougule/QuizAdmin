@@ -50,7 +50,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.q_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Questions");
+        getSupportActionBar().setTitle("SET "+setsIDs.get(selected_set_index));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
